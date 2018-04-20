@@ -1,0 +1,44 @@
+{% load staticfiles %}
+
+<html>
+    
+    <head>
+      
+        <title>Post</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+<div class="main">
+<div class="top">
+    <h1>My blog
+    <a href="{% url 'post_new' %}" class="top-menu"><span id="add" class="glyphicon glyphicon-plus"></span></a>
+</h1>
+</div>
+
+{% for post in posts %}
+    <div>
+        <p>
+            <div >
+                <ul>
+            <li class="todos"> 
+                <div class="all">
+               <div class="texts">
+                   <p> {{ post.title }} - {{ post.text }} </p>
+                </div>
+
+               <div class="buttons">
+                <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
+                    <span class="glyphicon glyphicon-pencil"></span></a>
+                <a href = "{% url 'post_delete' pk=post.pk %}"><button id="danger" type="button" 
+                    class="btn btn-danger">X</button></a>
+                </div>
+            </div>
+            </li>
+            <ul>
+    </div>
+</p> 
+</div>
+</html>
+{% endfor %}
